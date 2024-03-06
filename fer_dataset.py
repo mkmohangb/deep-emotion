@@ -11,7 +11,7 @@ def prepare_data(df):
     for i, row in enumerate(df.index):
         img = np.fromstring(df.loc[row, ' pixels'], dtype=int, sep=' ')
         img = np.reshape(img, (48, 48))
-        img_array[i] = img
+        img_array[i] = img / 255.
 
     return img_array, img_label
 
