@@ -38,8 +38,8 @@ def train(args):
         for i, data in enumerate(train_loader):
             optimizer.zero_grad()
             input, label = data
-            output = model(input)
-            loss = loss_obj(output, label)
+            output = model(input.to(device))
+            loss = loss_obj(output, label.to(device))
             loss.backward()
 
             optimizer.step()
@@ -59,8 +59,8 @@ def train(args):
         with torch.no_grad():
             for i,vdata in enumerate(val_loader): 
                 vinputs, vlabels = vdata
-                voutputs = model(vinputs)
-                vloss = loss_obj(voutputs, vlabels)
+                voutputs = model(vinputs.to(device))
+                vloss = loss_obj(voutputs, vlabels.to(device))
                 running_vloss += vloss
         
         avg_vloss = running_vloss / (i + 1)
