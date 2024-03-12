@@ -1,5 +1,7 @@
 #### Implementation of [DeepEmotion](https://www.mdpi.com/1424-8220/21/9/3046)
 
+- Network to detect facial emotion expression using CNN and Spatial Transformers.
+
 <img src="model-arch.png" width=600 title="Model architecture">
 
 - Download and prepare [FER 2013 dataset](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge)
@@ -16,4 +18,5 @@
   python train.py --log_dir logs -e 100 -b 256
   python test.py --model deep_emotion-256-0.005.pt
 ```
-- Test accuracy of 45% after training for 100 epochs
+- Test accuracy of 51% after training for 300 epochs. But the paper claims 70.1% accuracy.
+- Some information is missing in the paper like the batch size used. Also going by the Spatial transformer configuration, the input to FC layer would be 1000 instead of 90.
