@@ -16,7 +16,7 @@
 - Training and Testing (torch - 2.1.0)
 ```
   python train.py --log_dir logs -e 100 -b 256
-  python test.py --model deep_emotion-256-0.005.pt
+  python test.py --model deep_emotion-256-0.005-300.pt
 ```
 - Test accuracy of 51% after training for 300 epochs. But the paper claims 70.1% accuracy.
 - Some information is missing in the paper like the batch size used. Also going by the Spatial transformer configuration, the input to FC layer would be 1000 instead of 90.
