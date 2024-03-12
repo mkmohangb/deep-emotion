@@ -80,7 +80,6 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--log_dir')
-    # Put custom arguments here
     parser.add_argument('-e', '--epochs', type=int, default=2)
     parser.add_argument('-b', '--batch_size', type=int, default=64)
 
