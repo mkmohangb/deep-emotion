@@ -21,7 +21,7 @@
   python test.py --model deep_emotion-256-0.005-300.pt
 ```
 - Test accuracy of 51% after training for 300 epochs. But the paper claims 70.1% accuracy.
-- Some information is missing in the paper like the batch size used. Also going by the Spatial transformer configuration, the input to FC layer would be 1000 instead of 90.
+- Some information is missing in the paper like the batch size. Going by the Spatial transformer configuration, the input to FC layer would be 1000 instead of 90.
 
 ### Live prediction using webcam
 - opencv configuration file to be downloaded from [here](https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml)
