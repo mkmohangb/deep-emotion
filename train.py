@@ -32,6 +32,7 @@ def train(args):
         {'params': model.localization.parameters()},
         {'params': model.fc_loc.parameters()},
         ], lr=lr)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min')
     loss_obj = torch.nn.CrossEntropyLoss()#weight=torch.tensor(cls_weight))
     best_vloss = 1_000_000.
 
@@ -69,7 +70,7 @@ def train(args):
                 running_vloss += vloss
         
         avg_vloss = running_vloss / (i + 1)
-        print('LOSS train {} valid {}'.format(avg_loss, avg_vloss))
+        print('LOSS train {} valid {} lr {}'.format(avg_loss, avg_vloss, optimizer.param_groups[0]['lr']))
         valid_logger.add_scalars('Training vs. Validation Loss',
                     { 'Training' : avg_loss, 'Validation' : avg_vloss },
                     epoch + 1)
@@ -77,7 +78,9 @@ def train(args):
         if avg_vloss < best_vloss:
             best_vloss = avg_vloss
             print("saving model...as vloss reduced")
-            torch.save(model.state_dict(), f'deep_emotion-{args.batch_size}-{lr}.pt')
+            torch.save(model.state_dict(), f'deep_emotion-{args.batch_size}-{lr}-{args.epochs}.pt')
+
+        scheduler.step(avg_vloss)
 
 
 if __name__ == '__main__':
