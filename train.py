@@ -26,7 +26,12 @@ def train(args):
     cls_weight = (df[df[' Usage']=='Training']['emotion'].value_counts().sort_index() / len(df[df[' Usage']=='Training'])).tolist()
 
     lr = 0.005
-    optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=0.001)
+    optimizer = torch.optim.Adam([
+        {'params': model.feat_extraction.parameters()},
+        {'params': model.fc_de.parameters(), 'weight_decay': 0.001},
+        {'params': model.localization.parameters()},
+        {'params': model.fc_loc.parameters()},
+        ], lr=lr)
     loss_obj = torch.nn.CrossEntropyLoss()#weight=torch.tensor(cls_weight))
     best_vloss = 1_000_000.
 
