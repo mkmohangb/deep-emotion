@@ -16,3 +16,4 @@
   python train.py --log_dir logs -e 100 -b 256
   python test.py --model deep_emotion-256-0.005.pt
 ```
+- Test accuracy of 45% after training for 100 epochs
