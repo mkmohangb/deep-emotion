@@ -14,7 +14,6 @@ class DeepEmotion(nn.Module):
             nn.Conv2d(10,10,3),
             nn.ReLU(True),
             nn.Conv2d(10,10,3),
-            nn.BatchNorm2d(10),
             nn.MaxPool2d(2,2),
             nn.ReLU(True),
             nn.Dropout2d(),
