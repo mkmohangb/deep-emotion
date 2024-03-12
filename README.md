@@ -2,7 +2,9 @@
 
 <img src="model-arch.png" width=600 title="Model architecture">
 
-- Download and prepare dataset
+- Download and prepare [FER 2013 dataset](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge)
+- 48x48 pixel grayscale images of faces
+- emotion shown in the facial expression in to one of seven categories (0 = Angry, 1 = Disgust, 2 = Fear, 3 = Happy, 4 = Sad, 5 = Surprise, 6 = Neutral)
 ```
   kaggle competitions download -c challenges-in-representation-learning-facial-expression-recognition-challenge
   unzip challenges-in-representation-learning-facial-expression-recognition-challenge.zip
